@@ -1,6 +1,6 @@
 def call(mode = "") {
     goTool = tool type: 'go' , name: 'go-1.9.2'
-    String goPath = env.WORKSPAC
+    String goPath = env.WORKSPACE
     println "[INFO] GOPATH : $goPath"
     String outputFolder = "${env.WORKSPACE}/bin"
     sh "mkdir -p ${outputFolder}"
