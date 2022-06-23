@@ -1,6 +1,6 @@
 def call(mode = "") {
     if(fileExists("*.go")) {
-    goTool = tool name: 'go-1.9.2', type: 'go'
+    goTool = tool type: 'go' , name: 'go-1.9.2'
     String goPath = env.WORKSPAC
     println "[INFO] GOPATH : $goPath"
     String outputFolder = "${env.WORKSPACE}/bin"
