@@ -1,5 +1,4 @@
 def call(mode = "") {
-    if(fileExists("*.go")) {
     goTool = tool type: 'go' , name: 'go-1.9.2'
     String goPath = env.WORKSPAC
     println "[INFO] GOPATH : $goPath"
@@ -51,5 +50,4 @@ def call(mode = "") {
     else {
         error "there is no file with .go extension to build"
     }
-}
 }
