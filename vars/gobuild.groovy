@@ -32,11 +32,9 @@ def call(mode = "") {
             }           
             }
     }
-    zipFile = "${file}.zip"
+    zipFile = "${goPath}.zip"
             if(fileExists(zipFile)) {
                 sh "rm $zipFile"
             }
-    else {
-        error "there is no file with .go extension to build"
-    }
+           zip dir: outputFolder, zipFile: zipFile
 }
