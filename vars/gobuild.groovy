@@ -32,10 +32,10 @@ def call(mode = "") {
             }           
         }
     }
-    zipFile = "${goPath}.zip"
+    String zipFile = "${goPath}.zip"
     if(fileExists(zipFile)) {
         steps.sh "echo $zipFile"
         steps.sh "rm $zipFile"
     }
-    zip dir: goPath, zipFile: zipFile
+    steps.sh "zip -r ${zipFile} ${goPath}"
 }
