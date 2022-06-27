@@ -38,6 +38,7 @@ def call(mode = "") {
         steps.withEnv(["GOROOT=${goTool}", "PATH+GO=${goTool}/bin", "GOPATH=${goPath}"]) {
             steps.dir(goPath) {
                 steps.withEnv(["GOOS=$OS", "GOARCH=$architecture"]) {
+                    steps.sh "sudo rm -rf $GOPATH/go.*"
                     steps.sh "go mod init test"
                     steps.sh "go build -o $file"
                 }
