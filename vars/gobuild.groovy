@@ -30,11 +30,12 @@ def call(mode = "") {
                     steps.sh "go build -o $file"
                 }
             }           
-            }
+        }
     }
     zipFile = "${goPath}.zip"
-            if(fileExists(zipFile)) {
-                sh "rm $zipFile"
-            }
-           zip dir: outputFolder, zipFile: zipFile
+    if(fileExists(zipFile)) {
+        steps.sh "echo $zipFile"
+        steps.sh "rm $zipFile"
+    }
+    zip dir: ${outputFolder}, zipFile: ${zipFile}
 }
