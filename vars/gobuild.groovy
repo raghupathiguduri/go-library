@@ -1,7 +1,6 @@
 def call(mode = "") {
     goTool = tool type: 'go' , name: 'go-1.9.2'
-    currentWs = sh(returnStdout: true, script: 'pwd').trim()
-    String goPath = ${currentWs}
+    String goPath = sh(returnStdout: true, script: 'pwd').trim()
     steps.sh "echo ${goPath}"
     println "[INFO] GOPATH : $goPath"
     String outputFolder = "${goPath}/bin"
