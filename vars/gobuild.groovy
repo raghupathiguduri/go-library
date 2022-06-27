@@ -1,6 +1,6 @@
 def call(mode = "") {
     goTool = tool type: 'go' , name: 'go-1.9.2'
-    String goPath = pwd
+    String goPath = env.PWD
     steps.sh "echo ${goPath}"
     println "[INFO] GOPATH : $goPath"
     String outputFolder = "${goPath}/bin"
