@@ -9,26 +9,14 @@ def call(mode = "") {
                                    OS: 'darwin',
                                    architecture: 'amd64',
                                    postfix: '-darwin'
-                           ], [
-                                   OS: 'darwin',
-                                   architecture: '386',
-                                   postfix: '-darwin-x86'
-                           ], [
+                           ],  [
                                    OS: 'windows',
                                    architecture: 'amd64',
                                    postfix: '.exe'
-                           ], [
-                                   OS: 'windows',
-                                   architecture: '386',
-                                   postfix: '-32.exe'
-                           ] , [
+                           ],  [
                                    OS: 'linux',
                                    architecture: 'amd64',
                                    postfix: '-linux'
-                           ], [
-                                   OS: 'linux',
-                                   architecture: '386',
-                                   postfix: '-linux-x86'
                            ]]
     for(output in outputs) {
                 String file = "${outputFolder}/${output.OS}${output.architecture}"
