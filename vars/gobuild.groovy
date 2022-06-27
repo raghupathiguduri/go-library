@@ -1,8 +1,8 @@
 def call(mode = "") {
     goTool = tool type: 'go' , name: 'go-1.9.2'
-    String goPath = env.PWD
+    String goPath = $PWD
     println "[INFO] GOPATH : $goPath"
-    String outputFolder = "${env.PWD}/bin"
+    String outputFolder = "${PWD}/bin"
     sh "mkdir -p ${outputFolder}"
     def outputs = [[
                                    OS: 'darwin',
