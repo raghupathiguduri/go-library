@@ -37,5 +37,5 @@ def call(mode = "") {
         steps.sh "echo $zipFile"
         steps.sh "rm $zipFile"
     }
-    zip dir: ${outputFolder}, zipFile: ${zipFile}
+    zip dir: goPath, zipFile: zipFile
 }
