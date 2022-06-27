@@ -39,7 +39,7 @@ def call(mode = "") {
         steps.withEnv(["GOROOT=${goTool}", "PATH+GO=${goTool}/bin", "GOPATH=${goPath}"]) {
             steps.dir(goPath) {
                 steps.withEnv(["GOOS=$OS", "GOARCH=$architecture"]) {
-                    steps.sh "go build main.go -o $file"
+                    steps.sh "go build -o $file"
                 }
             }           
             }
