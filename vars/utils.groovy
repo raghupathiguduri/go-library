@@ -33,3 +33,9 @@ def getHelmChartPath() {
     println "Helm folder " + helmChartPath
     return helmChartPath
 }
+
+def loadPipelineProps(key) {
+    def pipelineConfig = readJSON file: "${WORKSPACE}/pipeline-config.json"
+    println pipelineConfig[key]
+    return pipelineConfig[key]
+}
