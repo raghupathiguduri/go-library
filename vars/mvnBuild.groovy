@@ -6,7 +6,7 @@ def call(mode = "") {
         error "Pipeline config file is missing"
     }
     def runTests = false
-    def AppParams = utils.loadPipelineProps()
+    def AppParams = utils.loadPipelineProps("AppParams")
     if(AppParams.runTests != null) {
         runTests = AppParams.runTests
     }
@@ -16,17 +16,24 @@ def call(mode = "") {
     }
     if(fileExists("pom.xml")) {
         if (runTests != true) {
-            steps.sh "mvn clean install -DskipTests"
+            steps.sh "mvn clean install"
         }
         else {
-            steps.sh "mvn clean install"
+            steps.sh "mvn clean install -DskipTests"
         }
         steps.sh "mkdir ${artifact_name}"
         steps.sh "cp target/*.jar ${artifact_name}"
-        steps.sh "zip -j ${artifact_name}.zip ${artifact_name}/*.jar"   
+        steps.sh "zip -j ${artifact_name}.zip ${artifact_name}/*.jar"
     }
     else
     {
         error "There is no pom.xml file in the project"
+    }
+    Containerization = false
+    if(AppParams.containerize == true) {
+        DockerBuild()
+    }
+    else {
+        echo "Containerization is set to false"
     }
 }
