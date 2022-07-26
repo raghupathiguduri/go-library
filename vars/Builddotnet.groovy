@@ -1,4 +1,4 @@
-def call(String dotnetcmd) {
+def call(mode = "") {
 	if(!params.BRANCH) {
 		error "Branch parameter is missing"
 	}
