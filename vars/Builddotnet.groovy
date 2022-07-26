@@ -5,6 +5,7 @@ def call(String dotnetcmd)
         error "Branch parameter is missing"
     }
 	try 
+		export PATH=/usr/local/share/dotnet:$PATH
     {	
 		sh "dotnet ${dotnetcmd}"
     }
