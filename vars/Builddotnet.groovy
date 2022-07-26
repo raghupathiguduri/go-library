@@ -7,15 +7,15 @@ def call(mode = "") {
 	def AppVersion = utils.loadPipelineProps("version")
 	def AppPublish = utils.loadpipelineProps("publish")
 	if(AppPublish.equals(true)) {
-	dotnetPublish
+	steps.sh "dotnetPublish"
 	}
 	steps.sh "mkdir ${Appartifact_name}-${AppVersion}"
 	if(ApprunTests.equals(true)) { 
-	dotnetTest
-	dotnetBuild --output "${Appartifact_name}-${AppVersion}"
+	steps.sh "dotnetTest"
+	steps.sh "dotnetBuild --outputDirectory ${Appartifact_name}-${AppVersion}"
 	}
 	else {
-	dotnetBuild --outputDirectory "${Appartifact_name}-${AppVersion}"
+	steps.sh"dotnetBuild --outputDirectory ${Appartifact_name}-${AppVersion}"
 	}
 	steps.sh "echo zipping artifact"
 	steps.sh "zip -r '${artifact_name}-${app_version}'.zip '${Appartifact_name}-${AppVersion}'"
