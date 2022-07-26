@@ -5,7 +5,7 @@ def call(mode = "") {
 	def ApprunTests = utils.loadPipelineProps("runTests")
 	def Appartifact_name = utils.loadPipelineProps("appName")
 	def AppVersion = utils.loadPipelineProps("version")
-	def AppPublish = utils.loadpipelineProps("publish")
+	def AppPublish = utils.loadPipelineProps("publish")
 	if(AppPublish.equals(true)) {
 	steps.sh "dotnetPublish"
 	}
