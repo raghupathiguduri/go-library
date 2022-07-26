@@ -12,11 +12,11 @@ def call(mode = "") {
 	steps.sh "mkdir ${Appartifact_name}-${AppVersion}"
 	if(ApprunTests.equals(true)) { 
 	dotnetTest
-	dotnetBuild --outputDirectory ${Appartifact_name}-${AppVersion}	
+	dotnetBuild --output "${Appartifact_name}-${AppVersion}"
 	}
 	else {
-	dotnetBuild --outputDirectory ${Appartifact_name}-${AppVersion}
+	dotnetBuild --outputDirectory "${Appartifact_name}-${AppVersion}"
 	}
 	steps.sh "echo zipping artifact"
-	steps.sh "zip -r ${artifact_name}-${app_version}.zip ${Appartifact_name}-${AppVersion}"
+	steps.sh "zip -r '${artifact_name}-${app_version}'.zip '${Appartifact_name}-${AppVersion}'"
 }
