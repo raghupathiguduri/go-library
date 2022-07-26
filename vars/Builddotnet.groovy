@@ -18,5 +18,5 @@ def call(mode = "") {
 	sh "dotnet build --output ${Appartifact_name}-${AppVersion}"
 	}
 	steps.sh "echo zipping artifact"
-	steps.sh "zip -r '${artifact_name}-${app_version}'.zip '${Appartifact_name}-${AppVersion}'"
+	steps.sh "zip -r '${Appartifact_name}-${AppVersion}'.zip '${Appartifact_name}-${AppVersion}'"
 }
